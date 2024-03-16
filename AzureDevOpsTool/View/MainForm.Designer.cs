@@ -32,13 +32,14 @@ namespace AzureDevOpsTool.View
             _btnExecute = new Button();
             _richTextBoxResult = new RichTextBox();
             _comboBoxServieType = new ComboBox();
+            _btnSetting = new Button();
             SuspendLayout();
             // 
             // _btnExecute
             // 
-            _btnExecute.Location = new Point(186, 12);
+            _btnExecute.Location = new Point(176, 12);
             _btnExecute.Name = "_btnExecute";
-            _btnExecute.Size = new Size(75, 23);
+            _btnExecute.Size = new Size(61, 23);
             _btnExecute.TabIndex = 0;
             _btnExecute.Text = "Execute";
             _btnExecute.UseVisualStyleBackColor = true;
@@ -62,11 +63,22 @@ namespace AzureDevOpsTool.View
             _comboBoxServieType.Size = new Size(158, 23);
             _comboBoxServieType.TabIndex = 2;
             // 
+            // _btnSetting
+            // 
+            _btnSetting.Location = new Point(354, 12);
+            _btnSetting.Name = "_btnSetting";
+            _btnSetting.Size = new Size(62, 23);
+            _btnSetting.TabIndex = 3;
+            _btnSetting.Text = "Setting";
+            _btnSetting.UseVisualStyleBackColor = true;
+            _btnSetting.Click += this._btnSetting_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(428, 199);
+            Controls.Add(_btnSetting);
             Controls.Add(_comboBoxServieType);
             Controls.Add(_richTextBoxResult);
             Controls.Add(_btnExecute);
@@ -80,5 +92,6 @@ namespace AzureDevOpsTool.View
         private Button _btnExecute;
         private RichTextBox _richTextBoxResult;
         private ComboBox _comboBoxServieType;
+        private Button _btnSetting;
     }
 }

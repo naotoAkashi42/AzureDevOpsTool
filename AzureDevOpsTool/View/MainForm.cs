@@ -29,6 +29,11 @@ namespace AzureDevOpsTool.View
             _richTextBoxResult.Text = _need.ExecuteService(type, _setting);
         }
 
+        private void _btnSetting_Click(object sender, EventArgs e)
+        {
+            // TODO ê›íËïœçXópUI
+        }
+
         private void InitServiceEntryComboBox()
         {
             var candidates = _need.GetServiceEntryTypeComboCandidates();
