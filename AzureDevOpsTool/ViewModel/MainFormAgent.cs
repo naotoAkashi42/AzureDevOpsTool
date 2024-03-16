@@ -13,7 +13,7 @@ namespace AzureDevOpsTool.ViewModel
         {
             switch (type)
             {
-                case ServiceEntryType.RepositreisInfo:
+                case ServiceEntryType.RepositoreisInfo:
                     {
                         var context = new GitServiceContext(setting.Uri, setting.PersonalAccessToken);
                         return ServiceEntry.GetRepositriesInfoLog(context);
