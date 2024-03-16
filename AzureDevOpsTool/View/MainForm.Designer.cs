@@ -1,5 +1,5 @@
 ﻿
-namespace AzureDevOpsTool
+namespace AzureDevOpsTool.View
 {
     partial class MainForm
     {
@@ -31,17 +31,18 @@ namespace AzureDevOpsTool
         {
             _btnExecute = new Button();
             _richTextBoxResult = new RichTextBox();
+            _comboBoxServieType = new ComboBox();
             SuspendLayout();
             // 
             // _btnExecute
             // 
-            _btnExecute.Location = new Point(12, 12);
+            _btnExecute.Location = new Point(186, 12);
             _btnExecute.Name = "_btnExecute";
             _btnExecute.Size = new Size(75, 23);
             _btnExecute.TabIndex = 0;
             _btnExecute.Text = "Execute";
             _btnExecute.UseVisualStyleBackColor = true;
-            _btnExecute.Click += this._btnExecute_Click;
+            _btnExecute.Click += _btnExecute_Click;
             // 
             // _richTextBoxResult
             // 
@@ -52,16 +53,25 @@ namespace AzureDevOpsTool
             _richTextBoxResult.TabIndex = 1;
             _richTextBoxResult.Text = "";
             // 
+            // _comboBoxServieType
+            // 
+            _comboBoxServieType.DropDownStyle = ComboBoxStyle.DropDownList;
+            _comboBoxServieType.FormattingEnabled = true;
+            _comboBoxServieType.Location = new Point(12, 12);
+            _comboBoxServieType.Name = "_comboBoxServieType";
+            _comboBoxServieType.Size = new Size(158, 23);
+            _comboBoxServieType.TabIndex = 2;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(428, 199);
+            Controls.Add(_comboBoxServieType);
             Controls.Add(_richTextBoxResult);
             Controls.Add(_btnExecute);
             Name = "MainForm";
             Text = "AzureDevOpsTool";
-            Load += Form1_Load;
             ResumeLayout(false);
         }
 
@@ -69,5 +79,6 @@ namespace AzureDevOpsTool
 
         private Button _btnExecute;
         private RichTextBox _richTextBoxResult;
+        private ComboBox _comboBoxServieType;
     }
 }

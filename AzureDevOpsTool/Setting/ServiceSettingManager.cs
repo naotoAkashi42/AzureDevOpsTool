@@ -1,21 +1,21 @@
 ﻿namespace AzureDevOpsTool.Setting
 {
-    internal static class AppSettingManager
+    internal static class ServiceSettingManager
     {
-        internal static AppSetting LoadSetting()
+        internal static ServiceSetting LoadSetting()
         {
             var uri = Properties.Settings.Default["Uri"].ToString();
             var personalAccessToken = Properties.Settings.Default["PersonalAccessToken"].ToString();
 
             if (uri == null || personalAccessToken == null)
             {
-                return new AppSetting(string.Empty, string.Empty);
+                return new ServiceSetting(string.Empty, string.Empty);
             }
 
-            return new AppSetting(uri, personalAccessToken);
+            return new ServiceSetting(uri, personalAccessToken);
         }
 
-        internal static void SaveSetting(AppSetting newSetting)
+        internal static void SaveSetting(ServiceSetting newSetting)
         {
             Properties.Settings.Default["Uri"] = newSetting.Uri;
             Properties.Settings.Default["PersonalAccessToken"] = newSetting.PersonalAccessToken;

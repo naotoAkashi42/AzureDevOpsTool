@@ -1,3 +1,6 @@
+using AzureDevOpsTool.View;
+using AzureDevOpsTool.ViewModel;
+
 namespace AzureDevOpsTool
 {
     internal static class Program
@@ -11,7 +14,8 @@ namespace AzureDevOpsTool
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            var agent = new MainFormAgent();
+            Application.Run(new MainForm(agent));
         }
     }
 }
