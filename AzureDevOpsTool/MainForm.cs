@@ -20,7 +20,8 @@ namespace AzureDevOpsTool
         private void _btnExecute_Click(object sender, EventArgs e)
         {
             var context = new GitServiceContext(_setting.Uri, _setting.PersonalAccessToken);
-            var result = ServiceEntry.GetRepositriesInfo(context);
+            var result = ServiceEntry.GetRepositriesInfoLog(context);
+            _richTextBoxResult.Text = result;
         }
     }
 }

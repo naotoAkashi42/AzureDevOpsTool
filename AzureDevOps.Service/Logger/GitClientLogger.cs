@@ -6,7 +6,7 @@ namespace AzureDevOpsTool.Service.Logger
 {
     internal static class GitClientLogger
     {
-        public static string GetRepositoryInfo(GitServiceContext context)
+        public static string GetRepositriesInfo(GitServiceContext context)
         {
             var connection = context.Connection;
             var gitClient = connection.GetClient<GitHttpClient>();

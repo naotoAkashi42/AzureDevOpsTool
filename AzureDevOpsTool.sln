@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTool", "AzureDevOpsTool\AzureDevOpsTool.csproj", "{FBB8AE3F-C6F5-4683-B8E4-7F151DCA75EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOps.Service", "AzureDevOps.Service\AzureDevOps.Service.csproj", "{4953E3C2-4E61-4001-A2D1-9123EE96B5BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTool.Service", "AzureDevOps.Service\AzureDevOpsTool.Service.csproj", "{4953E3C2-4E61-4001-A2D1-9123EE96B5BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

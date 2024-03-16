@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AzureDevOps.Service\AzureDevOps.Service.csproj" />
+    <ProjectReference Include="..\AzureDevOps.Service\AzureDevOpsTool.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

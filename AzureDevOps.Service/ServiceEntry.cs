@@ -1,8 +1,10 @@
-﻿namespace AzureDevOps.Service
+﻿using AzureDevOpsTool.Service.Logger;
+
+namespace AzureDevOps.Service
 {
     public static class ServiceEntry
     {
-        public static string GetRepositriesInfo(GitServiceContext gitClientContext)
-            => GetRepositriesInfo(gitClientContext);
+        public static string GetRepositriesInfoLog(GitServiceContext gitClientContext)
+            => GitClientLogger.GetRepositriesInfo(gitClientContext);
     }
 }
