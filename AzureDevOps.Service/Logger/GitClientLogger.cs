@@ -1,4 +1,5 @@
 ﻿using AzureDevOps.Service;
+using AzureDevOpsTool.Service.Wrapper;
 using Microsoft.TeamFoundation.SourceControl.WebApi;
 using System.Text;
 
@@ -8,9 +9,7 @@ namespace AzureDevOpsTool.Service.Logger
     {
         public static string GetRepositriesInfo(GitServiceContext context)
         {
-            var connection = context.Connection;
-            var gitClient = connection.GetClient<GitHttpClient>();
-            var repositories = gitClient.GetRepositoriesAsync().Result;
+            var repositories = GitClientWrapper.GetRepositories(context.Connection);
 
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("Repositories Info");
@@ -22,6 +21,30 @@ namespace AzureDevOpsTool.Service.Logger
                 stringBuilder.AppendLine(string.Empty);
             }
             return  stringBuilder.ToString();
+        }
+
+        public static string GetPullRequestsInfo(string targetReposName, GitServiceContext context)
+        {
+            var repositories = GitClientWrapper.GetRepositories(context.Connection).ToList();
+            var targetRepos = repositories.Find(r => r.Name.Equals(targetReposName));
+            if (targetRepos == null) return string.Empty;
+
+            var gitClient = context.Connection.GetClient<GitHttpClient>();
+            var searchCreteria = new GitPullRequestSearchCriteria()
+            {
+                Status = PullRequestStatus.Completed,
+            };
+            var pullRequests = gitClient.GetPullRequestsAsync(targetRepos.Id, searchCreteria).Result;
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("Pull Requests Info");
+            var header = $"Title(Id)\tCreatedBy\tCreateDate\t";
+            stringBuilder.AppendLine(header);
+            foreach(var pr in pullRequests)
+            {
+                stringBuilder.AppendLine($"{pr.Title}({pr.PullRequestId})\t{pr.CreatedBy.DisplayName}\t{pr.CreationDate}");
+            }
+            return stringBuilder.ToString();    
         }
     }
 }
