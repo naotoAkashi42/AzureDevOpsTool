@@ -4,14 +4,16 @@ namespace AzureDevOpsTool.Design
 {
     internal enum ServiceEntryType
     {
-        RepositreisInfo,
+        RepositoreisInfo,
+        PullRequestInfo,
     }
 
     internal static class ServiceEntryTypeExtension
     {
         private readonly static Dictionary<ServiceEntryType, string> _stringDic = new()
         {
-            { ServiceEntryType.RepositreisInfo, "Repositries Infomations" },
+            { ServiceEntryType.RepositoreisInfo, "Repositories Infomations" },
+            { ServiceEntryType.PullRequestInfo, "PullRequests Infomations" },
         };
 
         public static string ToDispString(this ServiceEntryType type) => _stringDic[type];
