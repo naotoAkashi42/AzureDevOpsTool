@@ -8,7 +8,9 @@ namespace AzureDevOpsTool.ViewModel
 {
     internal class MainFormAgent : MainForm.INeed
     {
-        public ServiceSetting ServiceSettings => ServiceSettingManager.LoadSetting();
+        public ServiceSetting LoadServiceSettings() => ServiceSettingManager.LoadSetting();
+
+        public UserSettingForm.INeed UserSettingFormNeed => new UserSettingFormAgent();
 
         public string[] GetServiceEntryTypeComboCandidates()
         {
