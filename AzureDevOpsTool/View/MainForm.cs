@@ -7,25 +7,25 @@ namespace AzureDevOpsTool.View
     {
         internal interface INeed
         {
-            ServiceSetting ServiceSettings { get; }
+            ServiceSetting LoadServiceSettings();
             string[] GetServiceEntryTypeComboCandidates();
             void UpdatePanelContent(ServiceEntryType type, ServiceSetting setting, Panel panel);
+            UserSettingForm.INeed UserSettingFormNeed { get; }
         }
 
         private readonly INeed _need;
-        private ServiceSetting _setting;
         internal MainForm(INeed need)
         {
             InitializeComponent();
             _need = need;
 
             InitServiceEntryComboBox();
-            _setting = _need.ServiceSettings;
         }
 
         private void _btnSetting_Click(object sender, EventArgs e)
         {
-            // TODO ê›íËïœçXópUI
+            using var f = new UserSettingForm(_need.UserSettingFormNeed);
+            f.ShowDialog();
         }
 
         private void InitServiceEntryComboBox()
@@ -36,8 +36,9 @@ namespace AzureDevOpsTool.View
 
         private void _comboBoxServieType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var serviceSetting = _need.LoadServiceSettings();
             var type = (ServiceEntryType)(_comboBoxServieType.SelectedIndex);
-            _need.UpdatePanelContent(type, _setting, _panel);
+            _need.UpdatePanelContent(type, serviceSetting, _panel);
         }
     }
 }
