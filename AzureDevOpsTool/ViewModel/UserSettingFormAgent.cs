@@ -13,7 +13,12 @@ namespace AzureDevOpsTool.ViewModel
         public bool IsValidUri(string input)
             => Uri.IsWellFormedUriString(input, UriKind.Absolute);
 
+        public ServiceSetting Load()
+            => ServiceSettingManager.LoadSetting();
+
         public void Save(ServiceSetting newSetting)
             =>  ServiceSettingManager.SaveSetting(newSetting);
+
+
     }
 }

@@ -86,6 +86,7 @@
             _btnCancel.TabIndex = 5;
             _btnCancel.Text = "Cancel";
             _btnCancel.UseVisualStyleBackColor = true;
+            _btnCancel.Click += _btnCancel_Click;
             // 
             // UserSettingForm
             // 
