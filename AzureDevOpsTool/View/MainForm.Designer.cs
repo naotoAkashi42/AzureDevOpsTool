@@ -29,28 +29,19 @@ namespace AzureDevOpsTool.View
         /// </summary>
         private void InitializeComponent()
         {
-            _btnExecute = new Button();
             _richTextBoxResult = new RichTextBox();
             _comboBoxServieType = new ComboBox();
             _btnSetting = new Button();
+            _panel = new Panel();
+            _panel.SuspendLayout();
             SuspendLayout();
-            // 
-            // _btnExecute
-            // 
-            _btnExecute.Location = new Point(176, 12);
-            _btnExecute.Name = "_btnExecute";
-            _btnExecute.Size = new Size(61, 23);
-            _btnExecute.TabIndex = 0;
-            _btnExecute.Text = "Execute";
-            _btnExecute.UseVisualStyleBackColor = true;
-            _btnExecute.Click += _btnExecute_Click;
             // 
             // _richTextBoxResult
             // 
             _richTextBoxResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _richTextBoxResult.Location = new Point(12, 41);
+            _richTextBoxResult.Location = new Point(3, 3);
             _richTextBoxResult.Name = "_richTextBoxResult";
-            _richTextBoxResult.Size = new Size(404, 146);
+            _richTextBoxResult.Size = new Size(398, 140);
             _richTextBoxResult.TabIndex = 1;
             _richTextBoxResult.Text = "";
             // 
@@ -62,36 +53,46 @@ namespace AzureDevOpsTool.View
             _comboBoxServieType.Name = "_comboBoxServieType";
             _comboBoxServieType.Size = new Size(158, 23);
             _comboBoxServieType.TabIndex = 2;
+            _comboBoxServieType.SelectedIndexChanged += _comboBoxServieType_SelectedIndexChanged;
             // 
             // _btnSetting
             // 
+            _btnSetting.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _btnSetting.Location = new Point(354, 12);
             _btnSetting.Name = "_btnSetting";
             _btnSetting.Size = new Size(62, 23);
             _btnSetting.TabIndex = 3;
             _btnSetting.Text = "Setting";
             _btnSetting.UseVisualStyleBackColor = true;
-            _btnSetting.Click += this._btnSetting_Click;
+            _btnSetting.Click += _btnSetting_Click;
+            // 
+            // _panel
+            // 
+            _panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _panel.Controls.Add(_richTextBoxResult);
+            _panel.Location = new Point(12, 41);
+            _panel.Name = "_panel";
+            _panel.Size = new Size(404, 146);
+            _panel.TabIndex = 4;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(428, 199);
+            Controls.Add(_panel);
             Controls.Add(_btnSetting);
             Controls.Add(_comboBoxServieType);
-            Controls.Add(_richTextBoxResult);
-            Controls.Add(_btnExecute);
             Name = "MainForm";
             Text = "AzureDevOpsTool";
+            _panel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button _btnExecute;
         private RichTextBox _richTextBoxResult;
         private ComboBox _comboBoxServieType;
         private Button _btnSetting;
+        private Panel _panel;
     }
 }

@@ -1,12 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AzureDevOpsTool.EXE.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AzureDevOpsTool.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Uri" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://dev.azure.com/aksh0402</Value>
     </Setting>
     <Setting Name="PersonalAccessToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">5jfda7ca72mjmpqpenzyslngd7nttfjvtntokuisuz7wnn74ah5q</Value>
     </Setting>
   </Settings>
 </SettingsFile>

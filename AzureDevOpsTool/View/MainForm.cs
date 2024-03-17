@@ -7,9 +7,9 @@ namespace AzureDevOpsTool.View
     {
         internal interface INeed
         {
-            ServiceSetting AppSettings { get; }
+            ServiceSetting ServiceSettings { get; }
             string[] GetServiceEntryTypeComboCandidates();
-            string ExecuteService(ServiceEntryType type, ServiceSetting setting);
+            void UpdatePanelContent(ServiceEntryType type, ServiceSetting setting, Panel panel);
         }
 
         private readonly INeed _need;
@@ -20,13 +20,7 @@ namespace AzureDevOpsTool.View
             _need = need;
 
             InitServiceEntryComboBox();
-            _setting = _need.AppSettings;
-        }
-
-        private void _btnExecute_Click(object sender, EventArgs e)
-        {
-            var type = (ServiceEntryType)_comboBoxServieType.SelectedIndex;
-            _richTextBoxResult.Text = _need.ExecuteService(type, _setting);
+            _setting = _need.ServiceSettings;
         }
 
         private void _btnSetting_Click(object sender, EventArgs e)
@@ -38,6 +32,12 @@ namespace AzureDevOpsTool.View
         {
             var candidates = _need.GetServiceEntryTypeComboCandidates();
             _comboBoxServieType.Items.AddRange(candidates);
+        }
+
+        private void _comboBoxServieType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var type = (ServiceEntryType)(_comboBoxServieType.SelectedIndex);
+            _need.UpdatePanelContent(type, _setting, _panel);
         }
     }
 }

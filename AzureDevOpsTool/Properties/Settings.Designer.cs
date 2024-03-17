@@ -25,7 +25,7 @@ namespace AzureDevOpsTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://dev.azure.com/aksh0402")]
         public string Uri {
             get {
                 return ((string)(this["Uri"]));
@@ -37,7 +37,7 @@ namespace AzureDevOpsTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5jfda7ca72mjmpqpenzyslngd7nttfjvtntokuisuz7wnn74ah5q")]
         public string PersonalAccessToken {
             get {
                 return ((string)(this["PersonalAccessToken"]));
