@@ -1,4 +1,6 @@
-﻿namespace AzureDevOpsTool.Controls
+﻿using Microsoft.TeamFoundation.SourceControl.WebApi;
+
+namespace AzureDevOpsTool.Controls
 {
     public partial class PullRequestsControl : UserControl
     {
@@ -7,7 +9,7 @@
             string[] GetTragetProjectCandidates();
             string[] GetTargetReposCandidates(string projectName);
 
-            string GetPullRequestInfoLog(string targetReposName);
+            string GetPullRequestsInfo(string targetReposName, PullRequestStatus status);
         }
 
         private readonly INeed _need;
@@ -27,7 +29,7 @@
         private void _btnExecute_Click(object sender, EventArgs e)
         {
             var targetRepos = _comboBoxRepos.Text;
-            _richTextBoxResult.Text = _need.GetPullRequestInfoLog(targetRepos);
+            _richTextBoxResult.Text = _need.GetPullRequestsInfo(targetRepos, PullRequestStatus.Completed);
 
             if (!_checkBoxOutputFile.Checked) return;
         }

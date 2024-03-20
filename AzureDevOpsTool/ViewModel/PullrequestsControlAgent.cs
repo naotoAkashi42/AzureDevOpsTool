@@ -1,4 +1,5 @@
-﻿using AzureDevOps.Service;
+﻿using System.Text;
+using AzureDevOps.Service;
 using AzureDevOpsTool.Controls;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.SourceControl.WebApi;
@@ -25,7 +26,17 @@ namespace AzureDevOpsTool.ViewModel
             return client.GetRepositoriesAsync(projectName).Result.Select(r => r.Name).ToArray();
         }
 
-        public string GetPullRequestInfoLog(string targetRepos)
-           => ServiceEntry.GetPullRequestsInfoLog(targetRepos, _context);
+        public string GetPullRequestsInfo(string targetRepos, PullRequestStatus status)
+        {
+            var pullRequsts = ServiceEntry.GetPullRequestsInfo(targetRepos, status, _context);
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Title,CreatedBy,Description,ClosedDate");
+            foreach (var pr in pullRequsts)
+            {
+                sb.AppendLine($"{pr.Title},{pr.CreatedBy.DisplayName}, {pr.Description.Replace(",", string.Empty)},{pr.ClosedDate.ToString()}");
+            }
+            return sb.ToString();
+        }
     }
 }
