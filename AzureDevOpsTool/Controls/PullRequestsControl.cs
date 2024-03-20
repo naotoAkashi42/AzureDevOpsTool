@@ -10,6 +10,9 @@ namespace AzureDevOpsTool.Controls
             string[] GetTargetReposCandidates(string projectName);
 
             string GetPullRequestsInfo(string targetReposName, PullRequestStatus status);
+            string GetUniqueCsvFileName();
+
+            void SaveToCsv(string srcStrings, FileInfo dstFileInfo);
         }
 
         private readonly INeed _need;
@@ -29,9 +32,13 @@ namespace AzureDevOpsTool.Controls
         private void _btnExecute_Click(object sender, EventArgs e)
         {
             var targetRepos = _comboBoxRepos.Text;
-            _richTextBoxResult.Text = _need.GetPullRequestsInfo(targetRepos, PullRequestStatus.Completed);
+            var pullReqInfo = _need.GetPullRequestsInfo(targetRepos, PullRequestStatus.Completed);
+            _richTextBoxResult.Text = pullReqInfo;
 
             if (!_checkBoxOutputFile.Checked) return;
+            var info = new FileInfo(_textBoxOutputPath.Text);
+
+            _need.SaveToCsv(pullReqInfo, info);
         }
 
         private void InitTargetProjectComboBox()
@@ -68,11 +75,11 @@ namespace AzureDevOpsTool.Controls
         private void _btnFolderBrows_Click(object sender, EventArgs e)
         {
             using var f = new FolderBrowserDialog();
-
+            
             var result = f.ShowDialog();
             if (result != DialogResult.OK) return;
 
-            _textBoxOutputPath.Text = f.SelectedPath;
+            _textBoxOutputPath.Text = Path.Combine(f.SelectedPath, _need.GetUniqueCsvFileName());
         }
     }
 }

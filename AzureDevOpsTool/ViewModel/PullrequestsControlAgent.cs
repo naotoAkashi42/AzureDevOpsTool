@@ -38,5 +38,13 @@ namespace AzureDevOpsTool.ViewModel
             }
             return sb.ToString();
         }
+
+        public string GetUniqueCsvFileName()
+            => $"work_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
+
+        public void SaveToCsv(string srcStrings, FileInfo dstFileInfo)
+        {
+            File.WriteAllText(dstFileInfo.FullName, srcStrings);
+        }
     }
 }
