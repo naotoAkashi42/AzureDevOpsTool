@@ -30,8 +30,8 @@
         {
             _lblReviewer = new Label();
             _lblCreatedBy = new Label();
-            _txtBoxPrCreator = new TextBox();
-            _txtBoxReviewer = new TextBox();
+            _txtBoxCreatedBy = new TextBox();
+            _txtBoxReviewedBy = new TextBox();
             _btnPrStatus = new Button();
             _lblStatus = new Label();
             _txtBoxPrStatusPreview = new TextBox();
@@ -59,17 +59,17 @@
             // 
             // _txtBoxPrCreator
             // 
-            _txtBoxPrCreator.Location = new Point(80, 14);
-            _txtBoxPrCreator.Name = "_txtBoxPrCreator";
-            _txtBoxPrCreator.Size = new Size(226, 23);
-            _txtBoxPrCreator.TabIndex = 2;
+            _txtBoxCreatedBy.Location = new Point(80, 14);
+            _txtBoxCreatedBy.Name = "_txtBoxPrCreator";
+            _txtBoxCreatedBy.Size = new Size(226, 23);
+            _txtBoxCreatedBy.TabIndex = 2;
             // 
             // _txtBoxReviewer
             // 
-            _txtBoxReviewer.Location = new Point(100, 41);
-            _txtBoxReviewer.Name = "_txtBoxReviewer";
-            _txtBoxReviewer.Size = new Size(206, 23);
-            _txtBoxReviewer.TabIndex = 3;
+            _txtBoxReviewedBy.Location = new Point(100, 41);
+            _txtBoxReviewedBy.Name = "_txtBoxReviewer";
+            _txtBoxReviewedBy.Size = new Size(206, 23);
+            _txtBoxReviewedBy.TabIndex = 3;
             // 
             // _btnPrStatus
             // 
@@ -125,8 +125,8 @@
             Controls.Add(_txtBoxPrStatusPreview);
             Controls.Add(_lblStatus);
             Controls.Add(_btnPrStatus);
-            Controls.Add(_txtBoxReviewer);
-            Controls.Add(_txtBoxPrCreator);
+            Controls.Add(_txtBoxReviewedBy);
+            Controls.Add(_txtBoxCreatedBy);
             Controls.Add(_lblCreatedBy);
             Controls.Add(_lblReviewer);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -143,8 +143,8 @@
 
         private Label _lblReviewer;
         private Label _lblCreatedBy;
-        private TextBox _txtBoxPrCreator;
-        private TextBox _txtBoxReviewer;
+        private TextBox _txtBoxCreatedBy;
+        private TextBox _txtBoxReviewedBy;
         private Button _btnPrStatus;
         private Label _lblStatus;
         private TextBox _txtBoxPrStatusPreview;

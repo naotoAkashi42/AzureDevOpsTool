@@ -3,12 +3,21 @@ using AzureDevOps.Service;
 using AzureDevOpsTool.Controls;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.SourceControl.WebApi;
+using static AzureDevOpsTool.Controls.PrSearchConditionForm;
 
 namespace AzureDevOpsTool.ViewModel
 {
     internal class PullRequestsControlAgent : PullRequestsControl.INeed
     {
         private readonly GitServiceContext _context;
+        private readonly PrSearchCondition _prSearchCondition 
+                            = new("*", "*", new List<PullRequestStatus> { PullRequestStatus.All});
+
+        public string SearchConditionPreView 
+            => $"#CreatedBy:{string.Empty},#ReviewedBy{string.Empty},#Status:{string.Empty}";
+
+        public PrSearchCondition SearchCondition => _prSearchCondition;
+
         public PullRequestsControlAgent(GitServiceContext context)
         {
             _context = context;
@@ -43,8 +52,6 @@ namespace AzureDevOpsTool.ViewModel
             => $"work_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
 
         public void SaveToCsv(string srcStrings, FileInfo dstFileInfo)
-        {
-            File.WriteAllText(dstFileInfo.FullName, srcStrings);
-        }
+           => File.WriteAllText(dstFileInfo.FullName, srcStrings);
     }
 }

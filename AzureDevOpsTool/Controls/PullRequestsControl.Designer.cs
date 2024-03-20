@@ -134,6 +134,7 @@
             // 
             // _btnSearchCondition
             // 
+            _btnSearchCondition.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _btnSearchCondition.Location = new Point(365, 61);
             _btnSearchCondition.Name = "_btnSearchCondition";
             _btnSearchCondition.Size = new Size(27, 23);
@@ -144,6 +145,7 @@
             // 
             // _txtBoxSearchCondition
             // 
+            _txtBoxSearchCondition.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             _txtBoxSearchCondition.Location = new Point(56, 59);
             _txtBoxSearchCondition.Name = "_txtBoxSearchCondition";
             _txtBoxSearchCondition.ReadOnly = true;

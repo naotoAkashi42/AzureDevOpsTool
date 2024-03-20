@@ -1,4 +1,5 @@
 ﻿using Microsoft.TeamFoundation.SourceControl.WebApi;
+using static AzureDevOpsTool.Controls.PrSearchConditionForm;
 
 namespace AzureDevOpsTool.Controls
 {
@@ -13,6 +14,9 @@ namespace AzureDevOpsTool.Controls
             string GetUniqueCsvFileName();
 
             void SaveToCsv(string srcStrings, FileInfo dstFileInfo);
+            string SearchConditionPreView { get; }
+
+            PrSearchCondition SearchCondition { get; }
         }
 
         private readonly INeed _need;
@@ -31,14 +35,15 @@ namespace AzureDevOpsTool.Controls
 
         private void PullRequestsControl_Load(object? sender, EventArgs e)
         {
-            SetUiEnable(false);
+            SetAllControlEnable(false);
 
             InitTargetProjectComboBox();
+            InitSearchConditionPreview();
 
-            SetUiEnable(true);
+            SetAllControlEnable(true);
         }
 
-        private void SetUiEnable(bool enable)
+        private void SetAllControlEnable(bool enable)
         {
             foreach (Control c in Controls)
             {
@@ -64,6 +69,11 @@ namespace AzureDevOpsTool.Controls
 
             var candidates = _need.GetTargetProjectCandidates();
             _comboBoxTargetProj.Items.AddRange(candidates);
+        }
+
+        private void InitSearchConditionPreview()
+        {
+            _txtBoxSearchCondition.Text = _need.SearchConditionPreView;
         }
 
         private void _comboBoxTargetProj_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +111,7 @@ namespace AzureDevOpsTool.Controls
 
         private void _btnSearchCondition_Click(object sender, EventArgs e)
         {
-            using var f = new PrSearchConditionForm();
+            using var f = new PrSearchConditionForm(_need.SearchCondition);
             f.ShowDialog();
         }
     }
