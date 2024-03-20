@@ -1,4 +1,4 @@
-﻿using AzureDevOpsTool.View;
+﻿using Microsoft.TeamFoundation.SourceControl.WebApi;
 
 namespace AzureDevOpsTool.Controls
 {
@@ -9,7 +9,10 @@ namespace AzureDevOpsTool.Controls
             string[] GetTargetProjectCandidates();
             string[] GetTargetReposCandidates(string projectName);
 
-            string GetPullRequestInfoLog(string targetReposName);
+            string GetPullRequestsInfo(string targetReposName, PullRequestStatus status);
+            string GetUniqueCsvFileName();
+
+            void SaveToCsv(string srcStrings, FileInfo dstFileInfo);
         }
 
         private readonly INeed _need;
@@ -20,18 +23,44 @@ namespace AzureDevOpsTool.Controls
             this.Dock = DockStyle.Fill;
             _need = need;
 
+            this.Load += PullRequestsControl_Load;
+
+            _checkBoxOutputFile.Checked = false;
+            _btnFolderBrows.Enabled = false;
+        }
+
+        private void PullRequestsControl_Load(object? sender, EventArgs e)
+        {
+            SetUiEnable(false);
+
             InitTargetProjectComboBox();
+
+            SetUiEnable(true);
+        }
+
+        private void SetUiEnable(bool enable)
+        {
+            foreach (Control c in Controls)
+            {
+                c.Enabled = enable;
+            }
         }
 
         private void _btnExecute_Click(object sender, EventArgs e)
         {
             var targetRepos = _comboBoxRepos.Text;
-            _richTextBoxResult.Text = _need.GetPullRequestInfoLog(targetRepos);
+            var pullReqInfo = _need.GetPullRequestsInfo(targetRepos, PullRequestStatus.Completed);
+            _richTextBoxResult.Text = pullReqInfo;
+
+            if (!_checkBoxOutputFile.Checked) return;
+            var info = new FileInfo(_textBoxOutputPath.Text);
+
+            _need.SaveToCsv(pullReqInfo, info);
         }
 
         private void InitTargetProjectComboBox()
         {
-            _comboBoxRepos.Items.Clear();   
+            _comboBoxRepos.Items.Clear();
 
             var candidates = _need.GetTargetProjectCandidates();
             _comboBoxTargetProj.Items.AddRange(candidates);
@@ -51,6 +80,23 @@ namespace AzureDevOpsTool.Controls
 
             var candidates = _need.GetTargetReposCandidates(targetProjName);
             _comboBoxRepos.Items.AddRange(candidates);
+        }
+
+        private void _checkBoxOutputFile_CheckedChanged(object sender, EventArgs e)
+        {
+            var isEnable = _checkBoxOutputFile.Checked;
+            _textBoxOutputPath.Enabled = isEnable;
+            _btnFolderBrows.Enabled = isEnable;
+        }
+
+        private void _btnFolderBrows_Click(object sender, EventArgs e)
+        {
+            using var f = new FolderBrowserDialog();
+            
+            var result = f.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+            _textBoxOutputPath.Text = Path.Combine(f.SelectedPath, _need.GetUniqueCsvFileName());
         }
     }
 }

@@ -34,6 +34,9 @@
             _labelTargetProj = new Label();
             _comboBoxTargetProj = new ComboBox();
             _btnExecute = new Button();
+            _checkBoxOutputFile = new CheckBox();
+            _textBoxOutputPath = new TextBox();
+            _btnFolderBrows = new Button();
             SuspendLayout();
             // 
             // _lblTargetRepos
@@ -47,20 +50,21 @@
             // 
             // _comboBoxRepos
             // 
+            _comboBoxRepos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             _comboBoxRepos.DropDownStyle = ComboBoxStyle.DropDownList;
             _comboBoxRepos.FormattingEnabled = true;
-            _comboBoxRepos.Location = new Point(102, 30);
+            _comboBoxRepos.Location = new Point(114, 30);
             _comboBoxRepos.Name = "_comboBoxRepos";
-            _comboBoxRepos.Size = new Size(138, 23);
+            _comboBoxRepos.Size = new Size(277, 23);
             _comboBoxRepos.TabIndex = 2;
             // 
             // _richTextBoxResult
             // 
             _richTextBoxResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _richTextBoxResult.Location = new Point(3, 85);
+            _richTextBoxResult.Location = new Point(3, 124);
             _richTextBoxResult.Name = "_richTextBoxResult";
             _richTextBoxResult.ReadOnly = true;
-            _richTextBoxResult.Size = new Size(247, 129);
+            _richTextBoxResult.Size = new Size(391, 218);
             _richTextBoxResult.TabIndex = 3;
             _richTextBoxResult.Text = "";
             // 
@@ -75,28 +79,63 @@
             // 
             // _comboBoxTargetProj
             // 
+            _comboBoxTargetProj.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             _comboBoxTargetProj.DropDownStyle = ComboBoxStyle.DropDownList;
             _comboBoxTargetProj.FormattingEnabled = true;
-            _comboBoxTargetProj.Location = new Point(102, 6);
+            _comboBoxTargetProj.Location = new Point(114, 6);
             _comboBoxTargetProj.Name = "_comboBoxTargetProj";
-            _comboBoxTargetProj.Size = new Size(138, 23);
+            _comboBoxTargetProj.Size = new Size(277, 23);
             _comboBoxTargetProj.TabIndex = 5;
             _comboBoxTargetProj.SelectedIndexChanged += _comboBoxTargetProj_SelectedIndexChanged;
             // 
             // _btnExecute
             // 
-            _btnExecute.Location = new Point(165, 56);
+            _btnExecute.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _btnExecute.Location = new Point(316, 95);
             _btnExecute.Name = "_btnExecute";
             _btnExecute.Size = new Size(75, 23);
             _btnExecute.TabIndex = 6;
             _btnExecute.Text = "Execute";
             _btnExecute.UseVisualStyleBackColor = true;
-            _btnExecute.Click += this._btnExecute_Click;
+            _btnExecute.Click += _btnExecute_Click;
+            // 
+            // _checkBoxOutputFile
+            // 
+            _checkBoxOutputFile.AutoSize = true;
+            _checkBoxOutputFile.Location = new Point(7, 60);
+            _checkBoxOutputFile.Name = "_checkBoxOutputFile";
+            _checkBoxOutputFile.Size = new Size(121, 19);
+            _checkBoxOutputFile.TabIndex = 7;
+            _checkBoxOutputFile.Text = "Csvファイル出力する";
+            _checkBoxOutputFile.UseVisualStyleBackColor = true;
+            _checkBoxOutputFile.CheckedChanged += _checkBoxOutputFile_CheckedChanged;
+            // 
+            // _textBoxOutputPath
+            // 
+            _textBoxOutputPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            _textBoxOutputPath.Location = new Point(134, 58);
+            _textBoxOutputPath.Name = "_textBoxOutputPath";
+            _textBoxOutputPath.Size = new Size(233, 23);
+            _textBoxOutputPath.TabIndex = 8;
+            // 
+            // _btnFolderBrows
+            // 
+            _btnFolderBrows.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _btnFolderBrows.Location = new Point(364, 58);
+            _btnFolderBrows.Name = "_btnFolderBrows";
+            _btnFolderBrows.Size = new Size(27, 25);
+            _btnFolderBrows.TabIndex = 9;
+            _btnFolderBrows.Text = "...";
+            _btnFolderBrows.UseVisualStyleBackColor = true;
+            _btnFolderBrows.Click += _btnFolderBrows_Click;
             // 
             // PullRequestsControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(_btnFolderBrows);
+            Controls.Add(_textBoxOutputPath);
+            Controls.Add(_checkBoxOutputFile);
             Controls.Add(_btnExecute);
             Controls.Add(_comboBoxTargetProj);
             Controls.Add(_labelTargetProj);
@@ -104,7 +143,7 @@
             Controls.Add(_comboBoxRepos);
             Controls.Add(_lblTargetRepos);
             Name = "PullRequestsControl";
-            Size = new Size(253, 217);
+            Size = new Size(397, 345);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +156,8 @@
         private Label _labelTargetProj;
         private ComboBox _comboBoxTargetProj;
         private Button _btnExecute;
+        private CheckBox _checkBoxOutputFile;
+        private TextBox _textBoxOutputPath;
+        private Button _btnFolderBrows;
     }
 }

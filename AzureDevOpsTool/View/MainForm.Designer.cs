@@ -38,10 +38,10 @@ namespace AzureDevOpsTool.View
             // 
             // _richTextBoxResult
             // 
-            _richTextBoxResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _richTextBoxResult.Location = new Point(3, 3);
+            _richTextBoxResult.Dock = DockStyle.Fill;
+            _richTextBoxResult.Location = new Point(0, 0);
             _richTextBoxResult.Name = "_richTextBoxResult";
-            _richTextBoxResult.Size = new Size(398, 140);
+            _richTextBoxResult.Size = new Size(404, 146);
             _richTextBoxResult.TabIndex = 1;
             _richTextBoxResult.Text = "";
             // 
@@ -51,7 +51,7 @@ namespace AzureDevOpsTool.View
             _comboBoxServieType.FormattingEnabled = true;
             _comboBoxServieType.Location = new Point(12, 12);
             _comboBoxServieType.Name = "_comboBoxServieType";
-            _comboBoxServieType.Size = new Size(158, 23);
+            _comboBoxServieType.Size = new Size(282, 23);
             _comboBoxServieType.TabIndex = 2;
             _comboBoxServieType.SelectedIndexChanged += _comboBoxServieType_SelectedIndexChanged;
             // 
