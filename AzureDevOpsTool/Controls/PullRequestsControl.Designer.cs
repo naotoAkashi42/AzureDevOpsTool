@@ -37,6 +37,7 @@
             _checkBoxOutputFile = new CheckBox();
             _textBoxOutputPath = new TextBox();
             _btnFolderBrows = new Button();
+            _btnSearchCondition = new Button();
             SuspendLayout();
             // 
             // _lblTargetRepos
@@ -64,7 +65,7 @@
             _richTextBoxResult.Location = new Point(3, 124);
             _richTextBoxResult.Name = "_richTextBoxResult";
             _richTextBoxResult.ReadOnly = true;
-            _richTextBoxResult.Size = new Size(391, 218);
+            _richTextBoxResult.Size = new Size(391, 260);
             _richTextBoxResult.TabIndex = 3;
             _richTextBoxResult.Text = "";
             // 
@@ -129,10 +130,21 @@
             _btnFolderBrows.UseVisualStyleBackColor = true;
             _btnFolderBrows.Click += _btnFolderBrows_Click;
             // 
+            // _btnSearchCondition
+            // 
+            _btnSearchCondition.Location = new Point(14, 95);
+            _btnSearchCondition.Name = "_btnSearchCondition";
+            _btnSearchCondition.Size = new Size(129, 23);
+            _btnSearchCondition.TabIndex = 10;
+            _btnSearchCondition.Text = "Search Condition";
+            _btnSearchCondition.UseVisualStyleBackColor = true;
+            _btnSearchCondition.Click += _btnSearchCondition_Click;
+            // 
             // PullRequestsControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(_btnSearchCondition);
             Controls.Add(_btnFolderBrows);
             Controls.Add(_textBoxOutputPath);
             Controls.Add(_checkBoxOutputFile);
@@ -143,7 +155,7 @@
             Controls.Add(_comboBoxRepos);
             Controls.Add(_lblTargetRepos);
             Name = "PullRequestsControl";
-            Size = new Size(397, 345);
+            Size = new Size(397, 387);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,5 +171,6 @@
         private CheckBox _checkBoxOutputFile;
         private TextBox _textBoxOutputPath;
         private Button _btnFolderBrows;
+        private Button _btnSearchCondition;
     }
 }

@@ -17,6 +17,6 @@ namespace AzureDevOpsTool.ViewModel
         }
 
         public string GetRepositoriesInfoLog()
-            => ServiceEntry.GetRepositriesInfoLog(_context);
+            => ServiceEntry.GetRepositriesInfo(_context);
     }
 }

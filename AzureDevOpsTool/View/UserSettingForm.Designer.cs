@@ -103,6 +103,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "UserSettingForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "UserSettingForm";
             ResumeLayout(false);
             PerformLayout();

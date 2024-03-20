@@ -34,6 +34,7 @@
             // 
             // _btnExecute
             // 
+            _btnExecute.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _btnExecute.Location = new Point(72, 3);
             _btnExecute.Name = "_btnExecute";
             _btnExecute.Size = new Size(75, 23);

@@ -92,11 +92,17 @@ namespace AzureDevOpsTool.Controls
         private void _btnFolderBrows_Click(object sender, EventArgs e)
         {
             using var f = new FolderBrowserDialog();
-            
+
             var result = f.ShowDialog();
             if (result != DialogResult.OK) return;
 
             _textBoxOutputPath.Text = Path.Combine(f.SelectedPath, _need.GetUniqueCsvFileName());
+        }
+
+        private void _btnSearchCondition_Click(object sender, EventArgs e)
+        {
+            using var f = new PrSearchConditionForm();
+            f.ShowDialog();
         }
     }
 }
