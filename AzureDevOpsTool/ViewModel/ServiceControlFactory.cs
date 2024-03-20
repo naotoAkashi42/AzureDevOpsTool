@@ -17,7 +17,7 @@ namespace AzureDevOpsTool.ViewModel
                     }
                 case ServiceEntryType.PullRequestInfo:
                     {
-                        var need = new PullrequestsControlAgent(context);
+                        var need = new PullRequestsControlAgent(context);
                         return new PullRequestsControl(need);
                     }
                 default : throw new NotSupportedException();

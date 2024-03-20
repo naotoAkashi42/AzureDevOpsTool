@@ -5,15 +5,15 @@ using Microsoft.TeamFoundation.SourceControl.WebApi;
 
 namespace AzureDevOpsTool.ViewModel
 {
-    internal class PullrequestsControlAgent : PullRequestsControl.INeed
+    internal class PullRequestsControlAgent : PullRequestsControl.INeed
     {
         private readonly GitServiceContext _context;
-        public PullrequestsControlAgent(GitServiceContext context)
+        public PullRequestsControlAgent(GitServiceContext context)
         {
             _context = context;
         }
 
-        public string[] GetTragetProjectCandidates()
+        public string[] GetTargetProjectCandidates()
         {
             var client = _context.Connection.GetClient<ProjectHttpClient>();
             return client.GetProjects().Result.Select(p => p.Name).ToArray();

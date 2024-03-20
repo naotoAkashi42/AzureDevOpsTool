@@ -6,7 +6,7 @@ namespace AzureDevOpsTool.Controls
     {
         internal interface INeed
         {
-            string[] GetTragetProjectCandidates();
+            string[] GetTargetProjectCandidates();
             string[] GetTargetReposCandidates(string projectName);
 
             string GetPullRequestInfoLog(string targetReposName);
@@ -33,7 +33,7 @@ namespace AzureDevOpsTool.Controls
         {
             _comboBoxRepos.Items.Clear();   
 
-            var candidates = _need.GetTragetProjectCandidates();
+            var candidates = _need.GetTargetProjectCandidates();
             _comboBoxTargetProj.Items.AddRange(candidates);
         }
 
