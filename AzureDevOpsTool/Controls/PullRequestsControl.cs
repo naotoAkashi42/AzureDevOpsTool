@@ -23,10 +23,27 @@ namespace AzureDevOpsTool.Controls
             this.Dock = DockStyle.Fill;
             _need = need;
 
-            InitTargetProjectComboBox();
+            this.Load += PullRequestsControl_Load;
 
             _checkBoxOutputFile.Checked = false;
             _btnFolderBrows.Enabled = false;
+        }
+
+        private void PullRequestsControl_Load(object? sender, EventArgs e)
+        {
+            SetUiEnable(false);
+
+            InitTargetProjectComboBox();
+
+            SetUiEnable(true);
+        }
+
+        private void SetUiEnable(bool enable)
+        {
+            foreach (Control c in Controls)
+            {
+                c.Enabled = enable;
+            }
         }
 
         private void _btnExecute_Click(object sender, EventArgs e)
