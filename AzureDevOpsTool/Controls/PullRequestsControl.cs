@@ -28,6 +28,8 @@
         {
             var targetRepos = _comboBoxRepos.Text;
             _richTextBoxResult.Text = _need.GetPullRequestInfoLog(targetRepos);
+
+            if (!_checkBoxOutputFile.Checked) return;
         }
 
         private void InitTargetProjectComboBox()
@@ -59,6 +61,16 @@
             var isEnable = _checkBoxOutputFile.Checked;
             _textBoxOutputPath.Enabled = isEnable;
             _btnFolderBrows.Enabled = isEnable;
+        }
+
+        private void _btnFolderBrows_Click(object sender, EventArgs e)
+        {
+            using var f = new FolderBrowserDialog();
+
+            var result = f.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+            _textBoxOutputPath.Text = f.SelectedPath;
         }
     }
 }

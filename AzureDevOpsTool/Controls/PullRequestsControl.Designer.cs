@@ -127,6 +127,7 @@
             _btnFolderBrows.TabIndex = 9;
             _btnFolderBrows.Text = "...";
             _btnFolderBrows.UseVisualStyleBackColor = true;
+            _btnFolderBrows.Click += _btnFolderBrows_Click;
             // 
             // PullRequestsControl
             // 
