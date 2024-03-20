@@ -1,6 +1,4 @@
-﻿using AzureDevOpsTool.View;
-
-namespace AzureDevOpsTool.Controls
+﻿namespace AzureDevOpsTool.Controls
 {
     public partial class PullRequestsControl : UserControl
     {
@@ -21,6 +19,9 @@ namespace AzureDevOpsTool.Controls
             _need = need;
 
             InitTargetProjectComboBox();
+
+            _checkBoxOutputFile.Checked = false;
+            _btnFolderBrows.Enabled = false;
         }
 
         private void _btnExecute_Click(object sender, EventArgs e)
@@ -31,7 +32,7 @@ namespace AzureDevOpsTool.Controls
 
         private void InitTargetProjectComboBox()
         {
-            _comboBoxRepos.Items.Clear();   
+            _comboBoxRepos.Items.Clear();
 
             var candidates = _need.GetTragetProjectCandidates();
             _comboBoxTargetProj.Items.AddRange(candidates);
@@ -51,6 +52,13 @@ namespace AzureDevOpsTool.Controls
 
             var candidates = _need.GetTargetReposCandidates(targetProjName);
             _comboBoxRepos.Items.AddRange(candidates);
+        }
+
+        private void _checkBoxOutputFile_CheckedChanged(object sender, EventArgs e)
+        {
+            var isEnable = _checkBoxOutputFile.Checked;
+            _textBoxOutputPath.Enabled = isEnable;
+            _btnFolderBrows.Enabled = isEnable;
         }
     }
 }
