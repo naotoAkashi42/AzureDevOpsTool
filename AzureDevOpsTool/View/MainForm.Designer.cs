@@ -41,7 +41,7 @@ namespace AzureDevOpsTool.View
             _richTextBoxResult.Dock = DockStyle.Fill;
             _richTextBoxResult.Location = new Point(0, 0);
             _richTextBoxResult.Name = "_richTextBoxResult";
-            _richTextBoxResult.Size = new Size(404, 146);
+            _richTextBoxResult.Size = new Size(403, 358);
             _richTextBoxResult.TabIndex = 1;
             _richTextBoxResult.Text = "";
             // 
@@ -58,11 +58,11 @@ namespace AzureDevOpsTool.View
             // _btnSetting
             // 
             _btnSetting.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            _btnSetting.Location = new Point(354, 12);
+            _btnSetting.Location = new Point(322, 12);
             _btnSetting.Name = "_btnSetting";
-            _btnSetting.Size = new Size(62, 23);
+            _btnSetting.Size = new Size(93, 23);
             _btnSetting.TabIndex = 3;
-            _btnSetting.Text = "Setting";
+            _btnSetting.Text = "User Setting";
             _btnSetting.UseVisualStyleBackColor = true;
             _btnSetting.Click += _btnSetting_Click;
             // 
@@ -72,14 +72,14 @@ namespace AzureDevOpsTool.View
             _panel.Controls.Add(_richTextBoxResult);
             _panel.Location = new Point(12, 41);
             _panel.Name = "_panel";
-            _panel.Size = new Size(404, 146);
+            _panel.Size = new Size(403, 358);
             _panel.TabIndex = 4;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(428, 199);
+            ClientSize = new Size(427, 411);
             Controls.Add(_panel);
             Controls.Add(_btnSetting);
             Controls.Add(_comboBoxServieType);

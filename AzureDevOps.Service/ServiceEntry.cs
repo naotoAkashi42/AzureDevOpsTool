@@ -6,9 +6,7 @@ namespace AzureDevOps.Service
     public static class ServiceEntry
     {
         #region Git Service
-
-
-        public static string GetRepositriesInfoLog(GitServiceContext gitClientContext)
+        public static string GetRepositriesInfo(GitServiceContext gitClientContext)
             => GitInfoAccessor.GetRepositriesInfo(gitClientContext);
 
         public static IReadOnlyList<GitPullRequest> GetPullRequestsInfo(
