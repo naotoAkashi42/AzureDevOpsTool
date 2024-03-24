@@ -54,6 +54,7 @@ namespace AzureDevOpsTool.Controls
         private void _btnExecute_Click(object sender, EventArgs e)
         {
             var targetRepos = _comboBoxRepos.Text;
+            // TODO: 検索条件の実装
             var pullReqInfo = _need.GetPullRequestsInfo(targetRepos, PullRequestStatus.Completed);
             _richTextBoxResult.Text = pullReqInfo;
 
